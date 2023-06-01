@@ -31,10 +31,6 @@ def save_learning_curves(loss, accuracy):
     figs = {x: plt.figure() for x in metrics}
     axes = {x: figs[x].subplots() for x in metrics}
 
-    # for phase in phases:
-    #     figs["Loss"].plot(loss[phase], label=phases)
-    #     figs["Accuracy"].plot(accuracy[phase], label=phases)
-
     for phase in phases:
         axes["Loss"].plot(loss[phase], label=phase)
         axes["Accuracy"].plot(accuracy[phase], label=phase)
@@ -179,24 +175,6 @@ def main():
         for x in phases
     }
     num_classes = 10
-
-    # train_idx, val_idx = train_test_split(
-    #     list(range(len(data))),
-    #     test_size=0.2,
-    #     shuffle=True,
-    #     stratify=data._labels,
-    # )
-    # image_datasets = {
-    #     "train": Subset(dataset=data, indices=train_idx),
-    #     "val": Subset(dataset=data, indices=val_idx),
-    #     "test": datasets.OxfordIIITPet(
-    #         root="./data",
-    #         split="test",
-    #         target_types="category",
-    #         download=True,
-    #         transform=transform,
-    #     ),
-    # }
 
     dataloaders = {
         x: DataLoader(
